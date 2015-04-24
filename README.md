@@ -1,6 +1,6 @@
 ![](title.png)
 
-Intactus is a super lightweight kit based on the Kary Framework's Leopard text facilities that provides native "text based" ASCII art like Mathematical Notation and Chart rendering for .NET technologies.
+Intactus is a super lightweight kit based on the Kary Framework's [Leopard](https://github.com/karysystems/leopard) text facilities that provides native "text based" ASCII art like Mathematical Notation and Chart rendering for .NET technologies.
 
 The text rendered using Intactus is better to be displayed using `Menlo` font family. 
 
