@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Intactus/Notation/Intactus.Notation.FunctionReplacer.cs">
+    <Files>
+      <File FileName="Intactus/Notation/Intactus.Notation.FunctionReplacer.cs" Line="22" Column="10" />
+      <File FileName="Intactus/Charts/Intactus.Charts.ColumnCharts.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
