@@ -24,7 +24,7 @@ Intactus.Notation.Generate( string );
 You feed it with a string representation of your notation and it will simply generate you an advance rendering:
 
 
-``C#
+```C#
 string simple_notation = "sqrt( abs( -32 / 2 ) )"
 string rendered_notion = Intactus.Notation.Generate(simple_notation);
 ```
