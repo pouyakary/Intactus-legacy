@@ -16,16 +16,18 @@ The text rendered using Intactus is better to be displayed using `Menlo` font fa
 
 To create "Mathematical Notation" you can use this simple API
 
+
 ```C#
 Intactus.Notation.Generate( string );
 ```
 
 You feed it with a string representation of your notation and it will simply generate you an advance rendering:
 
+
 ``C#
 string simple_notation = "sqrt( abs( -32 / 2 ) )"
 string rendered_notion = Intactus.Notation.Generate(simple_notation);
-``
+```
 
 And then the `rendered_notion` will be:
 
