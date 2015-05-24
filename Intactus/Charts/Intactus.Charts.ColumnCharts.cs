@@ -8,145 +8,136 @@
 
 
 using System;
-using Kary.Leopard;
-using Kary.Leopard.Text;
+using Kary.Text;
 
 namespace Kary.Intactus
 {
-	public partial class Charts
-	{
-
-		private static double max_size = 0;
-		private static int height_size = 15;
-
-
-
-		/// <summary>
-		/// Generates a ColumnCharts
-		/// </summary>
-		/// <returns>The chart.</returns>
-		/// <param name="inputs">Inputs.</param>
-		public static string ColumnChart (double[] inputs, int height) {
-
-			height_size = height;
-			return CreateColumnChart (inputs);
-
-		}
+    public partial class Charts
+    {
+        private static double max_size = 0;
+        private static int height_size = 15;
 
 
 
-		/// <summary>
-		/// Generates the mian chart
-		/// </summary>
-		/// <returns>The diagram.</returns>
-		/// <param name="inputs">Inputs.</param>
-		private static string CreateColumnChart (double[] inputs) {
-
-			//
-			// GENERATING THE MAX SIZE
-			//
-
-			max_size = inputs [0];
-
-			foreach (var member in inputs) {
-				if (member > max_size) {
-					max_size = member;
-				}
-			}
-
-
-			//
-			// FIRST PART, THE L OF THE CHART
-			//
-
-			string result = Utilities.Repeat ("│  \n", height_size) + "└──\n" + Utilities.Repeat (" ", 3);
-
-
-			//
-			// NOW ADDING EACH PART
-			//
-
-			for (int index_counter = 0; index_counter < inputs.Length; index_counter++) {
-
-				result = Utilities.Concatenate (result, ColumnMaker (inputs[index_counter], index_counter + 1));
-
-			}
-
-			return result;
-		}
+        /// <summary>
+        /// Generates a ColumnCharts
+        /// </summary>
+        /// <returns>The chart.</returns>
+        /// <param name="inputs">Inputs.</param>
+        public static string ColumnChart(double[] inputs, int height)
+        {
+            height_size = height;
+            return CreateColumnChart(inputs);
+        }
 
 
 
-		/// <summary>
-		/// Draws each one the chart strockes
-		/// </summary>
-		/// <returns>The part.</returns>
-		/// <param name="size">Size.</param>
-		/// <param name="index_number">Index_number.</param>
-		public static string ColumnMaker (double size, int index_number) {
+        /// <summary>
+        /// Generates the mian chart
+        /// </summary>
+        /// <returns>The diagram.</returns>
+        /// <param name="inputs">Inputs.</param>
+        private static string CreateColumnChart(double[] inputs)
+        {
+            //
+            // GENERATING THE MAX SIZE
+            //
 
-			string result = "";
+            max_size = inputs[0];
 
-			int size_in_lines = (int)(Math.Floor ((size / max_size) * 14));
-
-			if (size_in_lines < 1) {
-
-				//
-				// THE UPPER EMPTY
-				// 
-
-				for (int i = 0; i < height_size; i++) {
-
-					result += Utilities.Repeat (" ", 5) + '\n';
-
-				}
-
-				result += "─────\n " + index_number + "   ";
+            foreach (var member in inputs)
+            {
+                if (member > max_size)
+                {
+                    max_size = member;
+                }
+            }
 
 
+            //
+            // FIRST PART, THE L OF THE CHART
+            //
 
-			} else {
-
-				//
-				// THE UPPER EMPTY
-				// 
-
-				for (int i = 0; i < height_size - size_in_lines; i++) {
-
-					result += Utilities.Repeat (" ", 5) + '\n';
-
-				}
+            string result = Utilities.Repeat("│  \n", height_size) + "└──\n" + Utilities.Repeat(" ", 3);
 
 
-				//
-				// THE TOP OF THE THING
-				//
+            //
+            // NOW ADDING EACH PART
+            //
 
-				result += "┌─┐  \n";
+            for (int index_counter = 0; index_counter < inputs.Length; index_counter++)
+            {
+                result = Utilities.Concatenate(result, ColumnMaker(inputs[index_counter], index_counter + 1));
+            }
 
-
-				//
-				// NOW THE REST OF THE BOX
-				//
-
-				for (int i = 0; i < size_in_lines - 1; i++) {
-
-					result += "│ │  \n";
-
-				}
+            return result;
+        }
 
 
-				//
-				// AND FINALLY THE BOTTOM
-				// 
 
-				result += "┴─┴──\n " + index_number + "   ";
+        /// <summary>
+        /// Draws each one the chart strockes
+        /// </summary>
+        /// <returns>The part.</returns>
+        /// <param name="size">Size.</param>
+        /// <param name="index_number">Index_number.</param>
+        public static string ColumnMaker(double size, int index_number)
+        {
+            string result = "";
+            int size_in_lines = (int)(Math.Floor((size / max_size) * 14));
+
+            if (size_in_lines < 1)
+            {
+                //
+                // THE UPPER EMPTY
+                // 
+
+                for (int i = 0; i < height_size; i++)
+                {
+                    result += Utilities.Repeat(" ", 5) + '\n';
+                }
+
+                result += "─────\n " + index_number + "   ";
+            }
+            else
+            {
+                //
+                // THE UPPER EMPTY
+                // 
+
+                for (int i = 0; i < height_size - size_in_lines; i++)
+                {
+                    result += Utilities.Repeat(" ", 5) + '\n';
+                }
 
 
-			}
+                //
+                // THE TOP OF THE THING
+                //
+
+                result += "┌─┐  \n";
 
 
-			return result;
-		}
-	}
+                //
+                // NOW THE REST OF THE BOX
+                //
+
+                for (int i = 0; i < size_in_lines - 1; i++)
+                {
+                    result += "│ │  \n";
+                }
+
+
+                //
+                // AND FINALLY THE BOTTOM
+                // 
+
+                result += "┴─┴──\n " 
+						+ index_number 
+						+ Utilities.Repeat(" ", 4 - index_number.ToString().Length);
+            }
+
+            return result;
+        }
+    }
 }

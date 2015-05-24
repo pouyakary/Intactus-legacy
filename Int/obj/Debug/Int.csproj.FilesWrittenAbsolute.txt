@@ -15,3 +15,5 @@
 /Users/pmk/Dropbox/Document/Source Codes/Intactus/Int/bin/Debug/Kary.Calculat.dll
 /Users/pmk/Dropbox/Document/Source Codes/Intactus/Int/bin/Debug/Kary.Intactus.dll
 /Users/pmk/Dropbox/Document/Source Codes/Intactus/Int/bin/Debug/Kary.Intactus.dll.mdb
+/Users/pmk/Dropbox/Document/Source Codes/Intactus/Int/bin/Debug/Kary.Foundation.dll
+/Users/pmk/Dropbox/Document/Source Codes/Intactus/Int/bin/Debug/W3b.Sine.dll

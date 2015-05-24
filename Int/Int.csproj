@@ -28,11 +28,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Kary.Leopard">
-      <HintPath>..\..\Leopard\Leopard\bin\Release\Kary.Leopard.dll</HintPath>
+    <Reference Include="Kary.Foundation">
+      <HintPath>..\..\Leopard\Leopard\obj\Release\Kary.Foundation.dll</HintPath>
     </Reference>
     <Reference Include="Kary.Calculat">
-      <HintPath>..\..\Calculat\Binaries\Kary.Calculat.dll</HintPath>
+      <HintPath>..\..\..\..\..\Desktop\K\calculat-master 2\Binaries\Kary.Calculat.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

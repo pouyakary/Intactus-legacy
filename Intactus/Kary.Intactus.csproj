@@ -29,8 +29,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Kary.Leopard">
-      <HintPath>..\..\Leopard\Leopard\bin\Release\Kary.Leopard.dll</HintPath>
+    <Reference Include="Kary.Foundation">
+      <HintPath>..\..\Leopard\Leopard\obj\Release\Kary.Foundation.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

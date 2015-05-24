@@ -5,17 +5,15 @@
 //  Copyright (c) 2015 Pouya Kary. All rights reserved.
 //
 
-using System;
 
 namespace Kary.Intactus
 {
-	public partial class Notation {
-
-		public static string Generate (string text) {
-
-			return Notation.MasterWrapper (Notation.FunctionReplacer (text));
-
-		}
-	}
+    public partial class Notation
+    {
+        public static string Generate(string text)
+        {
+            return Notation.MasterWrapper(Notation.FunctionReplacer(text));
+        }
+    }
 }
 

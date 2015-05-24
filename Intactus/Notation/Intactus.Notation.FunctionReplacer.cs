@@ -7,38 +7,34 @@
 //
 
 
-using System;
 using System.Text.RegularExpressions;
 
 namespace Kary.Intactus
 {
-	public partial class Notation
-	{
-		/// <summary>
-		/// Standardizes the input for the engine
-		/// </summary>
-		/// <returns>The replacer.</returns>
-		/// <param name="text">Text.</param>
-		private static string FunctionReplacer (string text) {
+    public partial class Notation
+    {
+        /// <summary>
+        /// Standardizes the input for the engine
+        /// </summary>
+        /// <returns>The replacer.</returns>
+        /// <param name="text">Text.</param>
+        private static string FunctionReplacer(string text)
+        {
+            text = text.Replace('(', '[').Replace(')', ']').Replace('*', '×');
+            text = ' ' + text.TrimEnd().TrimStart() + ' ';
 
-			text = text.Replace ('(', '[').Replace (')', ']').Replace ('*', '×');
-			text = ' ' + text.TrimEnd ().TrimStart () + ' ';
+            string[] functions = { "sqrt", "abs", "floor" };
+            string[] intactus_notation = { "√", "⦗", "⎣" };
 
-			string[] functions = { "sqrt", "abs", "floor"};
-			string[] intactus_notation = { "√", "⦗", "⎣"};
+            for (int i = 0; i < functions.Length; i++)
+            {
+                foreach (var match in Regex.Matches(text, functions[i] + " *\\["))
+                {
+                    text = text.Replace(match.ToString(), intactus_notation[i]);
+                }
+            }
 
-			for (int i = 0; i < functions.Length; i++) {
-
-				foreach (var match in Regex.Matches (text, functions[i] + " *\\[")) {
-
-					text = text.Replace (match.ToString (), intactus_notation [i]);
-
-				}
-
-			}
-
-			return text;
-		}
-	}
+            return text;
+        }
+    }
 }
-
