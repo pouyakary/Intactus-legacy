@@ -17,7 +17,12 @@ namespace Kary.Intactus
 
     public partial class Notation
     {
-        private struct Formula
+        /// <summary>
+		/// This struct is designed to hold a string and also
+		/// the place holder "i" as the last character of the
+		/// string that we're reading
+		/// </summary>
+		private struct Formula
         {
             public int i;
             public string code;
