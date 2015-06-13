@@ -12,7 +12,17 @@ namespace Kary.Intactus
     {
         public static string Generate(string text)
         {
-            return Notation.MasterWrapper(Notation.FunctionReplacer(text));
+			//
+			// SOME CHANGES BEFORE WE EVEN START
+			//
+
+			text = text.Replace ( "->" , "→" );
+
+			//
+			// DONE, WE'RE READY TO GO
+			//
+
+			return Notation.MasterWrapper ( Notation.FunctionReplacer ( text ) );
         }
     }
 }

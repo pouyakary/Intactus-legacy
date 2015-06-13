@@ -27,7 +27,7 @@ namespace Kary.Intactus
             public int i;
             public string code;
 
-            public Formula(string input)
+            public Formula ( string input )
             {
                 this.i = 0;
                 this.code = input;
@@ -36,48 +36,49 @@ namespace Kary.Intactus
 
 
 
-        private static string MasterWrapper(string input)
+        private static string MasterWrapper ( string input )
         {
             //
             // FORMULA INIT / ALLOC
             //
 
-            var formula = new Formula(input);
-            return FormulaWrapper(ref formula, '[');
+			var formula = new Formula ( input );
+			return FormulaWrapper ( ref formula , '[' );
         }
 
 
 
         private static string FormulaWrapper(ref Formula code, char open_command)
         {
-            return LevelTwoWrapper(ref code, open_command);
+			return LevelTwoWrapper ( ref code , open_command );
         }
 
 
 
-        private static string DivideDiveString(string text)
+        private static string DivideDiveString ( string text )
         {
             //
             // SPACES
             //
 
-            string p1 = "", p2 = "", result = "";
-            int divider_place_holder = 0;
-            var lines = text.Split('\n');
+			string p1 = "", p2 = "", result = "";
+			int divider_place_holder = 0;
+			var lines = text.Split ( '\n' );
 
 
             //
             // FINDING THE PLACE OF /
             //
 
-            string line_to_read = lines[lines.Length / 2];
+            string line_to_read = lines [ lines.Length / 2 ];
 			
-            for (int i = 0; i < line_to_read.Length; i++)
-            {
-                if (line_to_read[i] == '/')
-                {
+            for ( int i = 0 ; i < line_to_read.Length ; i++ ) {
+				
+                if ( line_to_read [ i ] == '/') {
+					
                     divider_place_holder = i;
                     i = line_to_read.Length;
+
                 }
             }
 
@@ -86,50 +87,52 @@ namespace Kary.Intactus
             // FILLING THE P1
             //
 
-            foreach (var line in lines)
-            {
-                for (int i = 0; i < divider_place_holder; i++)
-                {
-                    p1 += line[i];
+            foreach ( var line in lines ) {
+				
+                for ( int i = 0 ; i < divider_place_holder ; i++ ) {
+					
+                    p1 += line [ i ];
+
                 }
 				
                 p1 += '\n';
             }
 			
-            p1 = Utilities.RemoveFromEnd(p1, "\n");
+			p1 = Utilities.RemoveFromEnd ( p1 , "\n" );
 
 
             //
             // FILLING THE P2
             //
 
-            foreach (var line in lines)
-            {
-                for (int i = divider_place_holder + 1; i < line.Length; i++)
-                {
-                    p2 += line[i];
+            foreach ( var line in lines ) {
+				
+                for ( int i = divider_place_holder + 1 ; i < line.Length ; i++ ) {
+					
+					p2 += line [ i ];
+
                 }
 				
                 p2 += '\n';
             }
 			
-            p2 = Utilities.RemoveFromEnd(p2, "\n");
+			p2 = Utilities.RemoveFromEnd ( p2 , "\n" );
 
 
             //
             // TRIM
             //
 
-            p1 = LineTrim(p1);
-            p2 = LineTrim(p2);
+			p1 = LineTrim ( p1 );
+			p2 = LineTrim ( p2 );
 
 
             //
             // GENERATING THE DIVIDE
             //
 
-            result = DivideMaker(p1, p2);
-            return Utilities.Perpend(result, " ");
+			result = DivideMaker ( p1 , p2 );
+			return Utilities.Perpend ( result , " " );
         }
 
 
@@ -137,39 +140,42 @@ namespace Kary.Intactus
         /// Removed the empty lines.
         /// </summary>
         /// <param name="text">Text.</param>
-        private static string LineTrim(string text)
-        {
-            text = text.Replace(Utilities.Repeat(" ", Utilities.LongestLine(text)) + '\n', "");
-            text = text.Replace('\n' + Utilities.Repeat(" ", Utilities.LongestLine(text)), "");
+        private static string LineTrim ( string text ) {
+			
+			text = text.Replace ( Utilities.Repeat ( " " , Utilities.LongestLine ( text ) ) + '\n' , "" );
+			text = text.Replace ( '\n' + Utilities.Repeat ( " " , Utilities.LongestLine ( text ) ) , "" );
             return text;
+
         }
 
 
 
-        private static string LevelTwoWrapper(ref Formula code, char open_command)
-        {
-            string result = LevelOneWrapper(ref code, open_command);
+        private static string LevelTwoWrapper ( ref Formula code , char open_command ) {
+			
+			string result = LevelOneWrapper ( ref code , open_command );
 
-            if (result.Split('/').Length == 2)
-            {
-                result = DivideDiveString(result);
+            if ( result.Split('/').Length == 2 ) {
+				
+				result = DivideDiveString ( result );
+
             }
 
-            if (open_command == '√')
-            {
-                return RadicalMaker(result);
-            }
-            else if (open_command == '⦗')
-            {
-                return BoxMaker(result, Box.Abs);
-            }
-            else if (open_command == '⎣')
-            {
-                return BoxMaker(result, Box.Floor);
-            }
-            else
-            {
-                return BoxMaker(result, Box.Brackets);
+            if ( open_command == '√' ) {
+				
+				return RadicalMaker ( result );
+
+            } else if ( open_command == '⦗' ) {
+				
+				return BoxMaker ( result , Box.Abs );
+
+            } else if ( open_command == '⎣' ) {
+				
+				return BoxMaker ( result , Box.Floor );
+
+            } else {
+				
+				return BoxMaker ( result , Box.Brackets );
+
             }
         }
 
@@ -190,22 +196,23 @@ namespace Kary.Intactus
             // CLOSE COMMAND FINDING BODY
             //
 
-            while (code.i < code.code.Length)
-            {
-                var index = code.code[code.i];
+            while ( code.i < code.code.Length ) {
+				
+				var index = code.code [ code.i ];
 
-                if (index == close_command)
-                {
+                if ( index == close_command ) {
+					
                     return result;
-                }
-                else if (index == '[' || index == '√' || index == '⦗' | index == '⎣')
-                {
+
+                } else if ( index == '[' || index == '√' || index == '⦗' | index == '⎣' ) {
+					
                     code.i++;
-                    result = Utilities.Concatenate(result, FormulaWrapper(ref code, index));
-                }
-                else
-                {
-                    result = Utilities.Concatenate(result, index.ToString());
+					result = Utilities.Concatenate ( result , FormulaWrapper ( ref code , index ) );
+
+                } else {
+					
+					result = Utilities.Concatenate ( result , index.ToString () );
+
                 }
 
                 code.i++;

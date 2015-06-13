@@ -18,16 +18,16 @@ namespace Kary.Intactus
         private static int height_size = 15;
 
 
-
         /// <summary>
         /// Generates a ColumnCharts
         /// </summary>
         /// <returns>The chart.</returns>
         /// <param name="inputs">Inputs.</param>
-        public static string ColumnChart(double[] inputs, int height)
-        {
+        public static string ColumnChart ( double [] inputs , int height ) {
+			
             height_size = height;
-            return CreateColumnChart(inputs);
+			return CreateColumnChart ( inputs );
+
         }
 
 
@@ -37,19 +37,20 @@ namespace Kary.Intactus
         /// </summary>
         /// <returns>The diagram.</returns>
         /// <param name="inputs">Inputs.</param>
-        private static string CreateColumnChart(double[] inputs)
-        {
+        private static string CreateColumnChart ( double [] inputs ) {
+			
             //
             // GENERATING THE MAX SIZE
             //
 
-            max_size = inputs[0];
+			max_size = inputs [ 0 ];
 
-            foreach (var member in inputs)
-            {
-                if (member > max_size)
-                {
+            foreach ( var member in inputs ) {
+				
+                if ( member > max_size ) {
+					
                     max_size = member;
+
                 }
             }
 
@@ -58,16 +59,17 @@ namespace Kary.Intactus
             // FIRST PART, THE L OF THE CHART
             //
 
-            string result = Utilities.Repeat("│  \n", height_size) + "└──\n" + Utilities.Repeat(" ", 3);
+			string result = Utilities.Repeat ( "│  \n" , height_size ) + "└──\n" + Utilities.Repeat ( " " , 3 );
 
 
             //
             // NOW ADDING EACH PART
             //
 
-            for (int index_counter = 0; index_counter < inputs.Length; index_counter++)
-            {
-                result = Utilities.Concatenate(result, ColumnMaker(inputs[index_counter], index_counter + 1));
+            for ( int index_counter = 0 ; index_counter < inputs.Length ; index_counter++ ) {
+				
+				result = Utilities.Concatenate ( result , ColumnMaker ( inputs [ index_counter ] , index_counter + 1 ) );
+
             }
 
             return result;
@@ -81,33 +83,35 @@ namespace Kary.Intactus
         /// <returns>The part.</returns>
         /// <param name="size">Size.</param>
         /// <param name="index_number">Index_number.</param>
-        public static string ColumnMaker(double size, int index_number)
+        public static string ColumnMaker ( double size , int index_number )
         {
             string result = "";
-            int size_in_lines = (int)(Math.Floor((size / max_size) * 14));
+			int size_in_lines = ( int ) ( Math.Floor ( ( size / max_size ) * ( height_size - 1 ) ) );
 
-            if (size_in_lines < 1)
-            {
+            if ( size_in_lines < 1 ) {
+				
                 //
                 // THE UPPER EMPTY
                 // 
 
-                for (int i = 0; i < height_size; i++)
-                {
-                    result += Utilities.Repeat(" ", 5) + '\n';
+                for ( int i = 0 ; i < height_size ; i++ ) {
+					
+					result += Utilities.Repeat ( " " , 5 ) + '\n';
+
                 }
 
-                result += "─────\n " + index_number + "   ";
-            }
-            else
-            {
+				result += "─────\n " + index_number + "   ";
+
+            } else {
+				
                 //
                 // THE UPPER EMPTY
                 // 
 
-                for (int i = 0; i < height_size - size_in_lines; i++)
-                {
-                    result += Utilities.Repeat(" ", 5) + '\n';
+                for ( int i = 0 ; i < height_size - size_in_lines ; i++ ) {
+					
+					result += Utilities.Repeat ( " " , 5 ) + '\n';
+
                 }
 
 
@@ -115,16 +119,17 @@ namespace Kary.Intactus
                 // THE TOP OF THE THING
                 //
 
-                result += "┌─┐  \n";
+				result += "┌─┐  \n";
 
 
                 //
                 // NOW THE REST OF THE BOX
                 //
 
-                for (int i = 0; i < size_in_lines - 1; i++)
-                {
+                for ( int i = 0 ; i < size_in_lines - 1 ; i++ ) {
+					
                     result += "│ │  \n";
+
                 }
 
 
@@ -132,9 +137,10 @@ namespace Kary.Intactus
                 // AND FINALLY THE BOTTOM
                 // 
 
-                result += "┴─┴──\n " 
-						+ index_number 
-						+ Utilities.Repeat(" ", 4 - index_number.ToString().Length);
+				result += "┴─┴──\n "
+				+ index_number
+				+ Utilities.Repeat ( " " , 4 - index_number.ToString ().Length );
+				
             }
 
             return result;

@@ -17,11 +17,12 @@ namespace Kary.Intactus
 
     public partial class Notation
     {
-        private enum Box
-        {
+        private enum Box {
+			
             Brackets,
             Abs,
             Floor
+
         }
 
 
@@ -32,12 +33,12 @@ namespace Kary.Intactus
         /// <returns>The maker.</returns>
         /// <param name="input">Input.</param>
         /// <param name="box_option">Box_option.</param>
-        private static string BoxMaker(string input, Box box_option)
+        private static string BoxMaker ( string input , Box box_option )
         {
-            char topleft, topright, bottomleft, bottomright, left, right;
+			char topleft, topright, bottomleft, bottomright, left, right;
 
-            switch (box_option)
-            {
+            switch ( box_option ) {
+				
                 case Box.Abs:
                     topleft = '⎜';
                     topright = '⎟';
@@ -61,8 +62,8 @@ namespace Kary.Intactus
                     topright = '┐';
                     bottomleft = '└';
                     bottomright = '┘';
-                    left = '⎪';
-                    right = '⎪';
+					left = '│';
+					right = '│';
                     break;
             }
 
@@ -71,13 +72,13 @@ namespace Kary.Intactus
             // THE SPECIAL CASE OF [ ] AND SO...
             //
 
-            if (input.Split('\n').Length == 1 && input.Replace("[", "") == input
-                && input.Replace("⎪", "") == input && input.Replace('⎣', ' ') == input)
-            {
-                switch (box_option)
+            if ( input.Split ( '\n' ).Length == 1 && input.Replace ( "[" , "" ) == input
+                && input.Replace ( "⎪" , "" ) == input && input.Replace ( '⎣' , ' ' ) == input ) {
+
+                switch ( box_option )
                 {
-                    case Box.Brackets:
-                        return '[' + input + ']';
+					case Box.Brackets:
+						return '[' + input + ']';
 
                     case Box.Abs:
                         return '⎪' + input + '⎪';
@@ -98,11 +99,12 @@ namespace Kary.Intactus
             var result = "";
             var max_line_size = 0;
 			
-            foreach (var line in input.Split('\n'))
-            {
-                if (line.Length > max_line_size)
-                {
-                    max_line_size = line.Length;
+            foreach ( var line in input.Split ( '\n' ) ) {
+				
+                if ( line.Length > max_line_size ) {
+					
+					max_line_size = line.Length;
+
                 }
             }
 
@@ -111,14 +113,15 @@ namespace Kary.Intactus
             // MAKING THE BOX
             //
 
-            result += topleft + Utilities.Repeat(" ", max_line_size) + topright + '\n';
+			result += topleft + Utilities.Repeat ( " " , max_line_size ) + topright + '\n';
 
-            foreach (var line in input.Split('\n'))
-            {
-                result += left + line.PadRight(max_line_size) + right + '\n';
+            foreach ( var line in input.Split ( '\n' ) ) {
+				
+				result += left + line.PadRight ( max_line_size ) + right + '\n';
+
             }
 
-            result += bottomleft + Utilities.Repeat(" ", max_line_size) + bottomright;
+			result += bottomleft + Utilities.Repeat ( " " , max_line_size ) + bottomright;
 
 
             //
@@ -135,28 +138,28 @@ namespace Kary.Intactus
         /// </summary>
         /// <returns>The maker.</returns>
         /// <param name="text">Text.</param>
-        private static string RadicalMaker(string text)
+        private static string RadicalMaker ( string text )
         {
             string result = "";
-            var lines = text.Split('\n');
+			var lines = text.Split ( '\n' );
 
 
             //
             // MAKES THE BODY OF THE SQRT. YOU THE LINES AND SO
             //
 
-            for (int i = 0; i < lines.Length; i++)
-            {
-                if (i == lines.Length - 1)
-                {
-                    result += "╲╱" + Utilities.Repeat(" ", lines.Length - 1) 
-							+ lines[i] + '\n';
-                }
-                else
-                {
-                    result += Utilities.Repeat(" ", lines.Length - i) 
-							+ '╱' + Utilities.Repeat(" ", i) 
-							+ lines[i] + '\n';
+            for ( int i = 0 ; i < lines.Length ; i++ ) {
+				
+                if ( i == lines.Length - 1 ) {
+					
+					result += "╲╱" + Utilities.Repeat ( " " , lines.Length - 1 )
+					+ lines [ i ] + '\n';
+
+                } else {
+					
+					result += Utilities.Repeat ( " " , lines.Length - i )
+					+ '╱' + Utilities.Repeat ( " " , i )
+					+ lines [ i ] + '\n';
                 }
             }
 
@@ -165,7 +168,9 @@ namespace Kary.Intactus
             // UPPERLINE OF THE RADICAL
             //
 
-            result = Utilities.Repeat(" ", lines.Length + 1) + Utilities.Repeat("_", Utilities.LongestLine(text)) + '\n' + result;
+			result = Utilities.Repeat ( " " , lines.Length + 1 )
+			+ Utilities.Repeat ( "_" , Utilities.LongestLine ( text ) )
+			+ '\n' + result;
 
 
             //
@@ -182,20 +187,21 @@ namespace Kary.Intactus
             // MULTI LINE WAY AND THEN IT RETURNS IT
             //
 
-            return Utilities.PlaceAtBox(Utilities.LongestLine(result), countLines(result), result);
+			return Utilities.PlaceAtBox ( Utilities.LongestLine ( result ) , countLines ( result ) , result );
         }
 
 
 
-        private static int countLines(string text)
+        private static int countLines ( string text )
         {
             int result = 1;
 			
-            foreach (var letter in text)
-            {
-                if (letter == '\n')
-                {
+            foreach ( var letter in text ) {
+				
+                if ( letter == '\n' ) {
+					
                     result++;
+
                 }
             }
 			
@@ -210,8 +216,8 @@ namespace Kary.Intactus
         /// <returns>The maker.</returns>
         /// <param name="numerator">Numerator.</param>
         /// <param name="denumerator">Denumerator.</param>
-        private static string DivideMaker(string numerator, string denumerator)
-        {
+        private static string DivideMaker ( string numerator , string denumerator ) {
+			
             string result = "";
 
 
@@ -219,19 +225,19 @@ namespace Kary.Intactus
             // SIZES
             //
 
-            int numerator_width = Utilities.LongestLine(numerator);
-            int denumerator_width = Utilities.LongestLine(denumerator);
+			int numerator_width = Utilities.LongestLine ( numerator );
+			int denumerator_width = Utilities.LongestLine ( denumerator );
 
 
             //
             // UP AND DOWN MAKERS 
             //
 
-            result += Utilities.PlaceAtCenter(Math.Max(numerator_width, denumerator_width), numerator);
+			result += Utilities.PlaceAtCenter ( Math.Max ( numerator_width , denumerator_width ) , numerator );
 
-            result += '\n' + Utilities.Repeat("─", Math.Max(numerator_width, denumerator_width)) + " \n";
+			result += '\n' + Utilities.Repeat ( "─" , Math.Max ( numerator_width , denumerator_width ) ) + " \n";
 
-            result += Utilities.PlaceAtCenter(Math.Max(numerator_width, denumerator_width), denumerator);
+			result += Utilities.PlaceAtCenter ( Math.Max ( numerator_width , denumerator_width ) , denumerator );
 
 
             //

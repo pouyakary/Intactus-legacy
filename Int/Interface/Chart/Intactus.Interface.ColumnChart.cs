@@ -8,7 +8,7 @@
 
 
 using System;
-using Kary.Foundation;
+using Kary;
 using Kary.Text;
 using Kary.Intactus;
 
