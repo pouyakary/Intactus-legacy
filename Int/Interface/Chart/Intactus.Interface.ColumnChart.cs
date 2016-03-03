@@ -3,7 +3,7 @@
 //  Intactus.Interface.ColumnChart.cs
 //
 //  Created by Pouya Kary on 2015/4/23
-//  Copyright (c) 2015 Pouya Kary. All rights reserved.
+//  Copyright (c) 2015-2016 Pouya Kary. All rights reserved.
 //
 
 

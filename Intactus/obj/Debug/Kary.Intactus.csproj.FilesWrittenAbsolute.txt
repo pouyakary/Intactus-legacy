@@ -7,3 +7,9 @@
 /Users/pmk/Dropbox/Document/Source Codes/Intactus/Intactus/bin/Debug/Kary.Foundation.dll
 /Users/pmk/Dropbox/Document/Source Codes/Intactus/Intactus/bin/Debug/Kary.Calculat.dll
 /Users/pmk/Dropbox/Document/Source Codes/Intactus/Intactus/bin/Debug/Antlr3.Runtime.dll
+/Users/pmk/Dropbox (Personal)/Codes/intactus/Intactus/obj/Debug/.NETFramework,Version=v4.0.AssemblyAttribute.cs
+/Users/pmk/Dropbox (Personal)/Codes/intactus/Intactus/bin/Debug/Kary.Intactus.dll.mdb
+/Users/pmk/Dropbox (Personal)/Codes/intactus/Intactus/bin/Debug/Kary.Intactus.dll
+/Users/pmk/Dropbox (Personal)/Codes/intactus/Intactus/obj/Debug/Kary.Intactus.dll
+/Users/pmk/Dropbox (Personal)/Codes/intactus/Intactus/obj/Debug/Kary.Intactus.dll.mdb
+/Users/pmk/Dropbox (Personal)/Codes/intactus/Intactus/bin/Debug/Kary.Foundation.dll

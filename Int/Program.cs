@@ -3,7 +3,7 @@
 //  Program.cs
 //
 //  Created by Pouya Kary on 2015/4/17
-//  Copyright (c) 2015 Pouya Kary. All rights reserved.
+//  Copyright (c) 2015-2016 Pouya Kary. All rights reserved.
 //
 
 
@@ -40,7 +40,7 @@ namespace Int
 			Terminal.PrintLn ( " Int, Terminal Interface for Complot and Intactus engines" );
 			Interface.LineWriter ();
 			Terminal.PrintLn ( " Kary.Intactus, Kary.Foundation, Kary.Text, Kary.Calculat, and Kary.Numerica" );
-			Terminal.PrintLn ( " Copyright (c) 2015 Kary Foundation, Inc. All rights reserved." );
+			Terminal.PrintLn ( " Copyright (c) 2015-2016 Kary Foundation, Inc. All rights reserved." );
 			Terminal.PrintLn ( " http://www.karyfoundation.org/developer/kary-framework/" );
 
 
