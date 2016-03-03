@@ -2,7 +2,7 @@
 //  MyClass.cs
 //
 //  Created by Pouya Kary on 2015/4/19
-//  Copyright (c) 2015 Pouya Kary. All rights reserved.
+//  Copyright (c) 2015-2016 Pouya Kary. All rights reserved.
 //
 
 
